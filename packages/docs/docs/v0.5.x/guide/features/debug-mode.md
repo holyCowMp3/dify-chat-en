@@ -1,74 +1,82 @@
-# 调试模式
+# Debug Mode
 
-调试模式是 Dify Chat 提供的开发调试功能，允许开发者无需进行任何代码改动，也不需要依赖后端服务即可快速配置 API Key ，直连 Dify API 调试应用功能。
+Debug mode is a development and debugging feature provided by Dify Chat, allowing developers to quickly configure API Keys without any code changes or dependency on backend services, directly connecting to the Dify API to debug application functionality.
 
-## 1. 功能概览
+## 1. Feature Overview
 
-进入调试模式后，你会看到应用列表的初始界面, 页面右下角有一个调试按钮。
+After entering debug mode, you will see the initial interface of the application list, with a debug button in the bottom right corner of the page.
 
-![初始界面](/guide__debug_mode_main.png)
+![Initial Interface](/guide__debug_mode_main.png)
 
-点击页面右下角的 "调试按钮"，会打开一个抽屉，抽屉中包含了应用配置的编辑区域，你可以填入 Dify 的 API Base URL 和 API Key 。
+Click the "Debug Button" in the bottom right corner of the page to open a drawer. The drawer contains an application configuration editing area where you can enter the Dify API Base URL and API Key.
 
-![添加应用配置抽屉-填入信息](/guide__debug_mode_data_fulfilled.png)
+![Add Application Configuration Drawer - Filled Information](/guide__debug_mode_data_fulfilled.png)
 
-## 2. 使用场景
+## 2. Use Cases
 
-调试模式适用于以下场景：
+Debug mode is suitable for the following scenarios:
 
-- **本地开发**：在没有后端代理服务的情况下直连 Dify 进行前端开发
-- **功能测试**：测试不同应用配置下的界面表现
-- **演示展示**：使用模拟数据进行产品演示
-- **问题排查**：隔离服务器问题，专注于前端逻辑调试
+- **Local Development**: Directly connect to Dify for frontend development without backend proxy services
+- **Feature Testing**: Test interface performance under different application configurations
+- **Demo Presentation**: Use simulated data for product demonstrations
+- **Problem Troubleshooting**: Isolate server issues and focus on frontend logic debugging
 
-## 3. 如何开启
+## 3. How to Enable
 
-要开始调试模式，有两种方案，你可以按需选择。
+To start debug mode, there are two options. You can choose according to your needs.
 
-### 3.1. 直接在 URL 中添加参数
+### 3.1. Add Parameter Directly in URL
 
-这种方案适合一次性调试的场景，适合临时排查问题或调试应用功能，调试完成后可以直接退出，回到正常的访问模式。
+This option is suitable for one-time debugging scenarios, suitable for temporarily troubleshooting problems or debugging application functionality. After debugging is complete, you can exit directly and return to normal access mode.
 
-开启方式：在浏览器地址栏的 URL 中添加 `isDebug=true` 参数，例如：
+Enable method: Add the `isDebug=true` parameter to the URL in the browser address bar, for example:
 
 ```
 http://localhost:5200/dify-chat/?isDebug=true
 ```
 
-### 3.2. 配置本地环境变量
+### 3.2. Specify Environment Variable
 
-这种方案适合长期开启调试模式的场景，不支持退出。
+This option is suitable for scenarios where debug mode needs to be enabled for a long time and does not support exit.
 
-开启方式：在项目的根目录下创建一个名为 `.env` 的文件，添加以下内容：
+Enable method: In the `packages/react-app/public/env.js` file, set the debug mode switch directly to `'true'` (note it's a string), then run `pnpm --filter dify-chat-app-react build` to rebuild the product for it to take effect.
 
-```bash
-# 开启调试模式
-PUBLIC_DEBUG_MODE=true
+```js title="packages/react-app/public/env.js"
+window.__DIFY_CHAT_ENV__ = {
+  PUBLIC_DEBUG_MODE: 'true',
+};
 ```
 
-然后运行 `pnpm build` 重新构建产物方可生效。
+If you are building based on docker compose, a more convenient way is to change the `PUBLIC_DEBUG_MODE` variable value of the `react-app` service to `true` in `docker-compose.yml`, then restart the container.
 
-## 4. 使用说明
+```yaml title="docker-compose.yml"
+services:
+  react-app:
+    environment:
+      - PUBLIC_DEBUG_MODE=true
+```
 
-> 不论你通过那种方式开启调试模式，所有相关数据均保存在 LocalStorage 和 SessionStorage 中，不会上传到任何第三方服务器，你可以放心使用。
+## 4. Usage Instructions
 
-### 4.1. 操作步骤
+> Regardless of how you enable debug mode, all related data is saved in LocalStorage and SessionStorage and will not be uploaded to any third-party server. You can use it with confidence.
 
-1. 点击页面左下角的调试按钮
-2. 在配置编辑器中输入或修改 JSON 配置
-3. 可以点击"使用示例配置"按钮快速填入模板
-4. 点击"保存配置"按钮保存设置
-5. 页面会自动刷新，应用列表将显示配置的调试应用
+### 4.1. Operation Steps
 
-### 4.2. 注意事项
+1. Click the debug button in the bottom left corner of the page
+2. Enter or modify JSON configuration in the configuration editor
+3. You can click the "Use Sample Configuration" button to quickly fill in the template
+4. Click the "Save Configuration" button to save settings
+5. The page will automatically refresh, and the application list will display the configured debug applications
 
-- 调试模式仅在开发环境中使用，生产环境不应启用
-- 配置数据保存在浏览器本地，清除浏览器数据会丢失配置
-- 调试应用的 API 密钥需要是真实有效的，才能正常进行对话
+### 4.2. Notes
 
-### 4.3. 清除配置
+- Debug mode should only be used in development environments and should not be enabled in production
+- Configuration data is saved locally in the browser. Clearing browser data will lose the configuration
+- The API key for debug applications needs to be real and valid to conduct conversations normally
 
-要清除调试配置，可以：
+### 4.3. Clear Configuration
 
-1. 在配置编辑器中点击退出调试按钮，或者清空内容后保存
-2. 或者直接在浏览器开发者工具中删除 `__DC__DEBUG_APPS` 键值对
+To clear debug configuration, you can:
+
+1. Click the exit debug button in the configuration editor, or save after clearing the content
+2. Or directly delete the `__DC__DEBUG_APPS` key-value pair in the browser developer tools

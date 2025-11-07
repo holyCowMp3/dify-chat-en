@@ -1,61 +1,61 @@
-# 30 秒试用
+# 30 Second Trial
 
-为方便演示，我们在 Github Pages 上部署了一个多应用模式的 React SPA 版本，你可以访问 https://lexmin0412.github.io/dify-chat/ 体验。
+For demonstration purposes, we have deployed a multi-app mode React SPA version on Github Pages. You can visit https://lexmin0412.github.io/dify-chat/ to try it out.
 
-点击以上链接，你会看到应用列表的初始界面：
+Click the above link, and you will see the initial interface of the application list:
 
-![初始界面](/apps_init.png)
+![Initial Interface](/apps_init.png)
 
-## 准备
+## Preparation
 
-首先，你需要在 Dify 控制台获取几个关键变量：
+First, you need to obtain several key variables from the Dify console:
 
-| 变量     | 说明                                                                                   |
-| -------- | -------------------------------------------------------------------------------------- |
-| API Base | Dify API 请求前缀, 如果你使用的是 Dify 官方提供的云服务，则为 `https://api.dify.ai/v1` |
-| Api Key  | Dify API 密钥，用于访问对应应用的 API, Dify 应用和 API 密钥是一对多的关系              |
+| Variable | Description                                                                                   |
+| -------- | --------------------------------------------------------------------------------------------- |
+| API Base | Dify API request prefix. If you are using Dify's official cloud service, it is `https://api.dify.ai/v1` |
+| Api Key  | Dify API key used to access the corresponding application's API. Dify applications and API keys have a one-to-many relationship |
 
-进入 Dify 的应用详情，点击左侧的 `访问 API`：
+Enter the Dify application details and click `Access API` on the left:
 
-![获取域名和前缀](/get_api_base.png)
+![Get Domain and Prefix](/get_api_base.png)
 
-`API 服务器` 后展示的域名即为 `API Base` 变量的值。
+The domain displayed after `API Server` is the value of the `API Base` variable.
 
-点击右侧的 `API 密钥` 按钮，即可看到 API Key 的管理弹窗：
+Click the `API Key` button on the right to see the API Key management popup:
 
-![获取 API Key](/get_api_key_entry.png)
+![Get API Key](/get_api_key_entry.png)
 
-你可以选择创建一个新的 API Key，或者复制现有的 API Key。
+You can choose to create a new API Key or copy an existing API Key.
 
-![获取 API Key](/get_api_key.png)
+![Get API Key](/get_api_key.png)
 
-完成以上步骤后，我们将会得到如下信息：
+After completing the above steps, we will get the following information:
 
 - API Base: `https://api.dify.ai/v1` OR `${SELF_HOSTED_API_DOMAIN}/v1`
 - API Key: `app-YOUR_API_KEY`
 
-## 添加应用配置
+## Add Application Configuration
 
-点击页面底部的 "添加应用配置" 按钮：
+Click the "Add Application Configuration" button at the bottom of the page:
 
-![添加应用配置按钮](/guide_mtapp_setting.png)
+![Add Application Configuration Button](/guide_mtapp_setting.png)
 
-依次填入应用信息：
+Fill in the application information in sequence:
 
-- 请求配置：在上一步中获取的 API Base 和 API Secret
-- 应用类型：默认是聊天助手，如果是其他类型应用，需要切换到对应的类型
-- 其他配置非必需，先保持默认值，后续需要再编辑即可
+- Request Configuration: API Base and API Secret obtained in the previous step
+- Application Type: Default is Chat Assistant. If it's another type of application, switch to the corresponding type
+- Other configurations are optional. Keep the default values first, and edit them later if needed
 
-![添加应用配置抽屉-已填入信息](/guide_mtapp_setting_add_fulfilled.png)
+![Add Application Configuration Drawer - Filled Information](/guide_mtapp_setting_add_fulfilled.png)
 
-点击确定按钮，提示 “添加配置成功”，在应用列表中会多出一条数据：
+Click the OK button. When prompted "Configuration added successfully", a new entry will appear in the application list:
 
-![添加应用配置成功](/guide_mtapp_setting_add_success.png)
+![Add Application Configuration Success](/guide_mtapp_setting_add_success.png)
 
-此时你可以点击应用卡片右上角的 "更多" 图标，对应用进行编辑和删除操作：
+At this point, you can click the "More" icon in the upper right corner of the application card to edit and delete the application:
 
-![应用卡片操作](/guide_mtapp_app_actions.png)
+![Application Card Actions](/guide_mtapp_app_actions.png)
 
-点击应用卡片，即可进入应用详情页开始对话了～
+Click the application card to enter the application details page and start chatting～
 
-![主界面](/guide_mtapp_main.png)
+![Main Interface](/guide_mtapp_main.png)

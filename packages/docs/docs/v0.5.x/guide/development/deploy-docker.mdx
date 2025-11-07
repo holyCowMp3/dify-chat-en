@@ -1,51 +1,51 @@
-# 部署 - 使用 Docker
+# Deploy - Using Docker
 
 :::tip
-本章节内容及 Docker 容器化部署功能由社区贡献者 @[@hitechbeijing](https://github.com/hitechbeijing) 提供。
+This section's content and Docker containerization deployment functionality are provided by community contributor @[@hitechbeijing](https://github.com/hitechbeijing).
 :::
 
-## 容器运行
+## Container Run
 
-进入docker目录启动容器编排：
+Enter the docker directory and start container orchestration:
 
 ```bash
 docker compose up dify-chat -d
 ```
 
-浏览器访问http://127.0.0.1:8080/dify-chat/
+Browser access http://127.0.0.1:8080/dify-chat/
 
-容器默认暴露http端口8080，https端口8443，可修改.env文件配置环境变量
+Containers expose http port 8080 and https port 8443 by default. You can modify the .env file to configure environment variables.
 
-默认配置的docker镜像为多应用模式，如需自定义使用（如单应用模式）请自行构建docker镜像
+The default configured docker image is multi-app mode. If you need custom usage (such as single-app mode), please build the docker image yourself.
 
-## 使用certbot全自动签发letsencrypt免费ssl证书
+## Use certbot to automatically issue Let's Encrypt free SSL certificates
 
-在操作之前请编辑.env文件修改以下几个参数：
+Before operating, please edit the .env file to modify the following parameters:
 
 ```bash
 NGINX_HTTPS_ENABLED=true
-#域名
+# Domain name
 NGINX_SERVER_NAME
-#待申请证书的域名
+# Domain name to apply for certificate
 CERTBOT_DOMAIN
 NGINX_ENABLE_CERTBOT_CHALLENGE=true
-#域名邮箱，随便写
+# Domain email, can be anything
 CERTBOT_EMAIL
-#更多证书申请参数，可留空
+# More certificate application parameters, can be left empty
 CERTBOT_OPTIONS
 ```
 
-> 注意：请确保你配置的域名可以使用80端口访问到你的 dify-chat 站点，详见：https://eff-certbot.readthedocs.io/en/latest/install.html#alternative-1-docker
+> Note: Please ensure that the domain name you configure can access your dify-chat site using port 80. For details, see: https://eff-certbot.readthedocs.io/en/latest/install.html#alternative-1-docker
 
-在docker目录执行命令即可全自动申请、签发证书：
+Execute the command in the docker directory to automatically apply for and issue certificates:
 
 ```bash
 docker-compose --profile certbot up
 ```
 
-签发的证书在[docker/certbot/conf/live/你的域名]目录下。
+The issued certificates are in the [docker/certbot/conf/live/your-domain] directory.
 
-注意：以上路径的证书文件为替身，如需将证书用在其他项目上需要在[docker/certbot/conf/archive/你的域名]目录下获取真实证书文件
+Note: The certificate files in the above path are symlinks. If you need to use the certificates in other projects, you need to get the real certificate files from the [docker/certbot/conf/archive/your-domain] directory.
 
 ```txt
 `privkey.pem`  : the private key for your certificate.
@@ -55,4 +55,4 @@ docker-compose --profile certbot up
                  without reading further documentation (see link below).
 ```
 
-![注意：证书需要定期续期]
+![Note: Certificates need to be renewed regularly]

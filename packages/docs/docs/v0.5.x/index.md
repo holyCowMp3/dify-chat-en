@@ -3,11 +3,11 @@ pageType: home
 
 hero:
   name: Dify Chat
-  text: 更贴近业务的 Dify Web APP
-  # tagline: 快速部署
+  text: A Dify Web APP Closer to Business Needs
+  # tagline: Quick Deployment
   actions:
     - theme: brand
-      text: 快速开始
+      text: Get Started
       link: /guide/start/introduction
     - theme: alt
       text: GitHub
@@ -16,22 +16,22 @@ hero:
     src: /rspress-icon.png
     alt: Logo
 features:
-  - title: 开箱即用
-    details: 运行启动脚本，填入 Dify API Key，直接开始使用。
+  - title: Out of the Box
+    details: Run the startup script, enter your Dify API Key, and start using it right away.
     icon: 📦
-  - title: 完全开源
-    details: 采用 MIT 开源协议，所有源代码完全开放。你可以 Fork 仓库，自由修改和分发，或者贡献代码，帮助项目持续完善。
+  - title: Fully Open Source
+    details: Licensed under MIT, all source code is fully open. You can Fork the repository, freely modify and distribute, or contribute code to help the project continue to improve.
     icon: 👏
-  - title: 灵活架构
-    details: 使用前后端分离的设计，充分考虑了用户体验、可扩展性和维护成本。你可以只部署轻量的前端应用，也可以集成完善的全栈 Platform 服务。
+  - title: Flexible Architecture
+    details: Uses a frontend-backend separation design, fully considering user experience, scalability, and maintenance costs. You can deploy only the lightweight frontend application, or integrate the complete full-stack Platform service.
     icon: 🏠
-  - title: 响应式设计
-    details: 采用响应式设计理念，支持桌面端、平板和移动设备访问，确保在不同屏幕尺寸下都能提供一致的用户体验和功能表现
+  - title: Responsive Design
+    details: Adopts responsive design principles, supporting desktop, tablet, and mobile device access, ensuring consistent user experience and functionality across different screen sizes.
     icon: 💻
-  - title: 主题可定制
-    details: 基于 TailwindCSS 和 Ant Design 构建，提供了灵活的主题定制能力，让你可以根据品牌需求或个人喜好轻松调整界面风格。
+  - title: Customizable Theme
+    details: Built on TailwindCSS and Ant Design, providing flexible theme customization capabilities, allowing you to easily adjust the interface style according to brand needs or personal preferences.
     icon: 🎨
-  - title: 丰富内容支持
-    details: 支持渲染图片、视频、代码、图表等丰富的交互性内容，让 AI 自由发挥。
+  - title: Rich Content Support
+    details: Supports rendering rich interactive content such as images, videos, code, charts, etc., giving AI free rein to express itself.
     icon: 🔥
 ---

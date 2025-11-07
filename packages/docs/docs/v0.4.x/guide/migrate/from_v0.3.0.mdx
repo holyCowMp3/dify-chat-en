@@ -1,37 +1,37 @@
-# 从 v0.3.0 迁移
+# Migrate from v0.3.0
 
-在本小节，我们将介绍如何从 v0.3.0 升级。
+In this section, we will introduce how to upgrade from v0.3.0.
 
-如果你是老版本的 React APP 用户，请根据你的具体情况，进行正确的操作：
+If you are a user of the old version React APP, please perform the correct operations according to your specific situation:
 
-- 如果你没有对代码进行过任何修改，请直接拉取 v0.4.0 Tag 后重新构建部署即可，本次升级对你来说将是无感的
-- 如果你修改过代码并且想要使用当前版本新增的功能，那么请遵循下面的步骤进行升级
+- If you have not made any code modifications, just pull the v0.4.0 Tag and rebuild and deploy. This upgrade will be seamless for you
+- If you have modified the code and want to use the new features in the current version, please follow the steps below to upgrade
 
 :::warning
-在 v0.4.0 版本中，我们完全弃用了 `DifyChatProvider` 和 `useDifyChat`, 这简化了组件嵌套关系。
+In v0.4.0, we completely deprecated `DifyChatProvider` and `useDifyChat`, which simplifies component nesting relationships.
 
-原来的 `DifyChatProvider` 承载的配置初始化功能，现在被分拆为几个部分。
+The configuration initialization functionality originally carried by `DifyChatProvider` has now been split into several parts.
 :::
 
-## 1. 初始化运行模式
+## 1. Initialize Running Mode
 
-在 `packages/react-app/src/App.tsx` 中，初始化运行模式：
+In `packages/react-app/src/App.tsx`, initialize the running mode:
 
 ```tsx title="packages/react-app/src/App.tsx"
-// 初始化全局运行时配置
+// Initialize global runtime configuration
 difyChatRuntimeConfig.init('multiApp')
 ```
 
-## 2. 初始化应用配置管理服务
+## 2. Initialize Application Configuration Management Service
 
-现在的应用配置管理服务将会在需要使用时自动引入，依据不同的运行模式，入口分别如下：
+The application configuration management service will now be automatically imported when needed. According to different running modes, the entry points are as follows:
 
-- 单应用模式：`/packages/react-app/src/services/app/singleApp/index.ts`
-- 多应用模式：`/packages/react-app/src/services/app/multiApp/index.ts`
+- Single-app mode: `/packages/react-app/src/services/app/singleApp/index.ts`
+- Multi-app mode: `/packages/react-app/src/services/app/multiApp/index.ts`
 
-你要做的是，在上面的入口文件中，导出你所使用的 `appService` 即可。
+What you need to do is export the `appService` you use in the entry file above.
 
-以多应用模式为例：
+Taking multi-app mode as an example:
 
 ```ts title="packages/react-app/src/services/app/multiApp/index.ts"
 import DifyAppService from './localstorage'
@@ -39,6 +39,6 @@ import DifyAppService from './localstorage'
 export const appService = new DifyAppService()
 ```
 
-## 3. 初始化 `userId` 和 `enableSetting`
+## 3. Initialize `userId` and `enableSetting`
 
-在 v0.4.0 中，新增了一个真正意义上的授权登录页面，你可以查看 [自定义用户信息](https://docs.dify-chat.lexmin.cn/guide/app-config/custom-user-info.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF) 文档, 自定义你的用户信息获取和更新逻辑。
+In v0.4.0, a real authorization login page was added. You can check the [Custom User Information](https://docs.dify-chat.lexmin.cn/guide/app-config/custom-user-info.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF) documentation to customize your user information retrieval and update logic.

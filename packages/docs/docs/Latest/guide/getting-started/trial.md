@@ -1,59 +1,59 @@
-# 初步体验
+# Quick Trial
 
-为方便演示，我们在 Github Pages 上部署了一个调试模式的应用，你可以点击 https://lexmin0412.github.io/dify-chat 来访问。
+For demonstration purposes, we have deployed a debug mode application on Github Pages. You can visit https://lexmin0412.github.io/dify-chat to access it.
 
-> 在调试模式下，Dify Chat 不会将你填入的任何信息上传到开发者服务器，所有数据都缓存在本地，前端页面直接与 Dify API 对接，你可以放心体验。
+> In debug mode, Dify Chat will not upload any information you enter to the developer's server. All data is cached locally, and the frontend page directly connects to the Dify API. You can safely try it out.
 
-进入演示站点后，你会看到应用列表的初始界面, 页面右下角有一个调试按钮。
+After entering the demo site, you will see the initial interface of the application list, with a debug button in the bottom right corner of the page.
 
-![初始界面](/guide__debug_mode_main.png)
+![Initial Interface](/guide__debug_mode_main.png)
 
-## 准备
+## Preparation
 
-首先，你需要在 Dify 控制台获取几个关键变量：
+First, you need to obtain several key variables from the Dify console:
 
-| 变量     | 说明                                                                                   |
-| -------- | -------------------------------------------------------------------------------------- |
-| API Base | Dify API 请求前缀, 如果你使用的是 Dify 官方提供的云服务，则为 `https://api.dify.ai/v1` |
-| Api Key  | Dify API 密钥，用于访问对应应用的 API, Dify 应用和 API 密钥是一对多的关系              |
+| Variable | Description                                                                                   |
+| -------- | --------------------------------------------------------------------------------------------- |
+| API Base | Dify API request prefix. If you are using Dify's official cloud service, it is `https://api.dify.ai/v1` |
+| Api Key  | Dify API key used to access the corresponding application's API. Dify applications and API keys have a one-to-many relationship |
 
-进入 Dify 的应用详情，点击左侧的 `访问 API`：
+Enter the Dify application details and click `Access API` on the left:
 
-![获取域名和前缀](/get_api_base.png)
+![Get Domain and Prefix](/get_api_base.png)
 
-`API 服务器` 后展示的域名即为 `API Base` 变量的值。
+The domain displayed after `API Server` is the value of the `API Base` variable.
 
-点击右侧的 `API 密钥` 按钮，即可看到 API Key 的管理弹窗：
+Click the `API Key` button on the right to see the API Key management popup:
 
-![获取 API Key](/get_api_key_entry.png)
+![Get API Key](/get_api_key_entry.png)
 
-你可以选择创建一个新的 API Key，或者复制现有的 API Key。
+You can choose to create a new API Key or copy an existing API Key.
 
-![获取 API Key](/get_api_key.png)
+![Get API Key](/get_api_key.png)
 
-完成以上步骤后，我们将会得到如下信息：
+After completing the above steps, we will get the following information:
 
 - API Base: `https://api.dify.ai/v1` OR `${SELF_HOSTED_API_DOMAIN}/v1`
 - API Key: `app-YOUR_API_KEY`
 
-## 填写应用配置
+## Fill in Application Configuration
 
-点击页面右下角的 "调试按钮"：
+Click the "Debug Button" in the bottom right corner of the page:
 
-![调试模式按钮](/guide__debug_mode_button.png)
+![Debug Mode Button](/guide__debug_mode_button.png)
 
-可以看到调试模式的数据配置抽屉, 点击输入框下方的 "使用示例配置" 按钮：
+You can see the debug mode data configuration drawer. Click the "Use Sample Configuration" button below the input box:
 
-![使用示例配置按钮](/guide__debug_mode_use_sample_data_button.png)
+![Use Sample Configuration Button](/guide__debug_mode_use_sample_data_button.png)
 
-依次填入你的 apiBase 和 apiKey：
+Fill in your apiBase and apiKey in sequence:
 
-![添加应用配置抽屉-填入信息](/guide__debug_mode_data_fulfilled.png)
+![Add Application Configuration Drawer - Filled Information](/guide__debug_mode_data_fulfilled.png)
 
-点击下方的 "保存配置" 按钮，提示 “调试配置保存成功”，在应用列表中会多出一条数据：
+Click the "Save Configuration" button below. When prompted "Debug configuration saved successfully", a new entry will appear in the application list:
 
-![调试配置保存成功](/guide__debug_mode_save_success.png)
+![Debug Configuration Saved Successfully](/guide__debug_mode_save_success.png)
 
-点击应用卡片，即可进入应用详情页开始对话了～
+Click the application card to enter the application details page and start chatting～
 
-![主界面](/guide__sample_chat_main.png)
+![Main Interface](/guide__sample_chat_main.png)

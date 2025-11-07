@@ -1,29 +1,29 @@
-# 开始配置
+# Start Configuration
 
-访问项目界面，如果之前没有存量数据，第一次进入页面时会展示缺省状态，你需要点击页面底部的 "添加应用配置" 按钮：
+Access the project interface. If there is no existing data, the first time you enter the page will show a default state. You need to click the "Add Application Configuration" button at the bottom of the page:
 
-![添加应用配置按钮](/guide_mtapp_setting.png)
+![Add Application Configuration Button](/guide_mtapp_setting.png)
 
-此时会弹出添加应用配置的表单抽屉：
+At this point, a form drawer for adding application configuration will pop up:
 
-![添加应用配置抽屉](/guide_mtapp_setting_add.png)
+![Add Application Configuration Drawer](/guide_mtapp_setting_add.png)
 
-依次填入应用信息：
+Fill in the application information in sequence:
 
-- 请求配置：在 [30 秒试用](../start/trial#准备) 中获取的 API Base 和 API Secret
-- 应用类型：默认是聊天助手，如果是其他类型应用，需要切换到对应的类型
-- 其他配置非必需，先保持默认值，后续需要再编辑即可
+- Request Configuration: API Base and API Secret obtained in [Quick Trial](../getting-started/trial#preparation)
+- Application Type: Default is Chat Assistant. If it's another type of application, switch to the corresponding type
+- Other configurations are optional. Keep the default values first, and edit them later if needed
 
-![添加应用配置抽屉-已填入信息](/guide_mtapp_setting_add_fulfilled.png)
+![Add Application Configuration Drawer - Filled Information](/guide_mtapp_setting_add_fulfilled.png)
 
-点击确定按钮，提示 “添加配置成功”，在应用列表中会多出一条数据：
+Click the OK button. When prompted "Configuration added successfully", a new entry will appear in the application list:
 
-![添加应用配置成功](/guide_mtapp_setting_add_success.png)
+![Add Application Configuration Success](/guide_mtapp_setting_add_success.png)
 
-此时你可以点击应用卡片右上角的 "更多" 图标，对应用进行编辑和删除操作：
+At this point, you can click the "More" icon in the upper right corner of the application card to edit and delete the application:
 
-![应用卡片操作](/guide_mtapp_app_actions.png)
+![Application Card Actions](/guide_mtapp_app_actions.png)
 
-点击应用卡片，即可进入应用详情页开始对话：
+Click the application card to enter the application details page and start chatting:
 
-![主界面](/guide_mtapp_main.png)
+![Main Interface](/guide_mtapp_main.png)

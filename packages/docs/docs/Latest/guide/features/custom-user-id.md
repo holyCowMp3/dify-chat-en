@@ -1,14 +1,14 @@
-# 自定义 User ID
+# Custom User ID
 
-在调用大部分 Dify API 时，需要传入 `userId`，用于标识用户身份。
+When calling most Dify APIs, you need to pass `userId` to identify the user.
 
-默认情况下，Dify Chat 会使用 `FingerprintJS` 生成一个唯一的用户 ID，并将其作为 `userId` 参数传入。
+By default, Dify Chat uses `FingerprintJS` to generate a unique user ID and passes it as the `userId` parameter.
 
-如果你希望控制 `userId` 的生成逻辑，可以修改 `mockLogin` 函数，自定义登录逻辑：
+If you want to control the generation logic of `userId`, you can modify the `mockLogin` function to customize the login logic:
 
 ```tsx title="packages/react-app/src/pages/auth/index.tsx"
 /**
- * 模拟登录
+ * Mock login
  */
 const mockLogin = async () => {
   const fp = await FingerPrintJS.load();

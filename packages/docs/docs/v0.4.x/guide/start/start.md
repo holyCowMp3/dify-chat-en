@@ -1,27 +1,27 @@
-# 更进一步
+# Next Steps
 
-在上一节 [30 秒试用](./trial.md) 中，我们对多应用模式的 React SPA 版本进行了试用，并了解了基本功能，接下来，我们将循序渐进地介绍 Dify Chat，让它真正为你所用。
+In the previous section [30 Second Trial](./trial.md), we tried out the multi-app mode React SPA version and learned about the basic functionality. Next, we will gradually introduce Dify Chat to make it truly useful for you.
 
-在此之前，你需要先做两个选择：
+Before that, you need to make two choices:
 
-- 运行模式
-- 技术实现
+- Running mode
+- Technical implementation
 
-## 选择运行模式
+## Choose Running Mode
 
-Dify Chat 提供两种应用模式来满足不同的使用场景：
+Dify Chat provides two application modes to meet different usage scenarios:
 
-**单应用模式**：适合个人用户或小型团队，专注于单一 AI 应用的深度使用。你可以配置一个聊天机器人、知识问答助手或创意写作工具，享受专注的 AI 交互体验。
+**Single Application Mode**: Suitable for individual users or small teams, focusing on in-depth use of a single AI application. You can configure a chatbot, knowledge Q&A assistant, or creative writing tool, enjoying a focused AI interaction experience.
 
-**多应用模式**：专为企业级用户设计，支持同时管理多个 Dify 应用。无论是客服系统、内容创作、数据分析还是代码助手，你都可以在一个界面中无缝切换，实现工作流程的统一管理。这种模式特别适合需要多 AI 能力协同的企业场景，让团队成员能够根据具体需求选择合适的 AI 助手。
+**Multiple Application Mode**: Designed for enterprise users, supporting simultaneous management of multiple Dify applications. Whether it's customer service systems, content creation, data analysis, or code assistants, you can seamlessly switch between them in one interface, achieving unified workflow management. This mode is particularly suitable for enterprise scenarios that require multiple AI capabilities to work together, allowing team members to choose the appropriate AI assistant according to specific needs.
 
-## 选择技术实现
+## Choose Technical Implementation
 
-我们提供了 React SPA 和 Next.js 版本供你选择，你可以前往 [介绍界面](./introduction.md#%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0) 查看两种技术实现的对比，选择适合你的版本。
+We provide React SPA and Next.js versions for you to choose from. You can go to [Introduction Page](./introduction.md#%E5%A4%9A%E7%A7%8D%E5%AE%9E%E7%8E%B0) to view the comparison of the two technical implementations and choose the version that suits you.
 
-## 下一步
+## Next Steps
 
-由于多应用和单应用的配置方式存在众多差异，接下来我们将对两种模式的配置进行分别阐述，你可以点击以下链接查看：
+Since there are many differences in configuration methods between multi-app and single-app modes, we will explain the configuration of the two modes separately. You can click the following links to view:
 
-- [配置 - 多应用模式](../app-config/config-multiple/start.md)
-- [配置 - 单应用模式](../app-config/config-single/start.md)
+- [Configuration - Multi-App Mode](../app-config/config-multiple/start.md)
+- [Configuration - Single-App Mode](../app-config/config-single/start.md)

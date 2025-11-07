@@ -1,12 +1,12 @@
 import { Tab, Tabs } from 'rspress/theme';
 
-# 部署 - 使用 PM2
+# Deploy - Using PM2
 
-本文将会介绍如何配置 Nginx，将 Dify Chat 部署到生产环境。
+This article will introduce how to configure Nginx to deploy Dify Chat to production.
 
-## 生产构建
+## Production Build
 
-首先需要构建生产版本：
+First, you need to build the production version:
 
 <Tabs>
   <Tab label="React SPA">
@@ -21,14 +21,14 @@ pnpm build:next
 	</Tab>
 </Tabs>
 
-## Nginx 配置
+## Nginx Configuration
 
 <Tabs>
   <Tab label="React SPA">
 ```nginx title="nginx.conf"
-# 注意：
-# 将 dify-chat.com 替换为你的域名
-# 将 /path/to/dify-chat/packages/react-app/dist/ 替换为你的构建产物路径
+# Note:
+# Replace dify-chat.com with your domain name
+# Replace /path/to/dify-chat/packages/react-app/dist/ with your build artifact path
 http {
     server {
         listen 443 ssl;
@@ -47,9 +47,9 @@ http {
 	</Tab>
   <Tab label="Next.js">
 ```nginx title="nginx.conf"
-# 注意：
-# 将 dify-chat-next.com 替换为你的域名
-# 将 /path/to/dify-chat/packages/nextjs-app/ 替换为你的 Next.js 项目根目录
+# Note:
+# Replace dify-chat-next.com with your domain name
+# Replace /path/to/dify-chat/packages/nextjs-app/ with your Next.js project root directory
 http {
 	server {
 		listen 443 ssl;
@@ -59,14 +59,14 @@ http {
 		ssl_certificate /etc/nginx/ssl/dify-chat-next.com_bundle.crt;
 		ssl_certificate_key /etc/nginx/ssl/dify-chat-next.com.key;
 
-		# 静态资源缓存
+		# Static resource cache
 		location /_next/static/ {
 			alias /path/to/dify-chat/packages/nextjs-app/.next/static/;
 			expires 30d;
 			access_log off;
 		}
 
-		# 反向代理所有其他请求到 Next.js 服务
+		# Reverse proxy all other requests to Next.js service
 		location / {
 			proxy_pass http://127.0.0.1:5300;
 			proxy_http_version 1.1;
@@ -81,20 +81,20 @@ http {
 	</Tab>
 </Tabs>
 
-### 启动 Next.js 项目
+### Start Next.js Project
 
-如果你使用的是 Next.js 版本，推荐使用 PM2 启动项目。
+If you are using the Next.js version, it is recommended to use PM2 to start the project.
 
-在 PM2 中配置：
+Configure in PM2:
 
 ```js title="ecosystem.config.js"
 module.exports = {
   apps: [
     {
       name: 'dify-chat-nextjs-app',
-      cwd: '/path/to/dify-chat/packages/nextjs-app', // 工作目录
+      cwd: '/path/to/dify-chat/packages/nextjs-app', // Working directory
       script: 'pnpm',
-      args: 'start', // 例如 nextjs 启动命令
+      args: 'start', // For example, nextjs startup command
       env: {
         NODE_ENV: 'production',
         PORT: 5300,
@@ -104,11 +104,10 @@ module.exports = {
 }
 ```
 
-使用 PM2 启动项目：
+Start the project using PM2:
 
 ```bash
 pm2 start /path/to/ecosystem.config.js
 ```
 
-## Docker 部署
-
+## Docker Deployment
