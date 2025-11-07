@@ -1,13 +1,13 @@
-# 开始配置
+# Start Configuration
 
-访问项目界面，如果之前没有存量数据，在进入页面时将会提示应用配置不存在并弹出配置抽屉，你需要填写以下必填字段：
+Access the project interface. If there is no existing data, you will be prompted that the application configuration does not exist and a configuration drawer will pop up. You need to fill in the following required fields:
 
-- 请求配置：在 [30 秒试用](../start/trial#准备) 中获取的 API Base 和 API Secret
-- 应用类型：默认是聊天助手，如果是其他类型应用，需要切换到对应的类型
-- 其他配置非必需，先保持默认值，后续需要再编辑即可
+- Request Configuration: API Base and API Secret obtained in [Quick Trial](../getting-started/trial#preparation)
+- Application Type: Default is Chat Assistant. If it's another type of application, switch to the corresponding type
+- Other configurations are optional. Keep the default values first, and edit them later if needed
 
-![初始化单应用配置](/guide_single_app_init.png)
+![Initialize Single Application Configuration](/guide_single_app_init.png)
 
-填写信息后点击确定，将会展示应用运行界面：
+After filling in the information and clicking OK, the application running interface will be displayed:
 
-![初始化单应用配置](/guide_single_app_init_finished.png)
+![Initialize Single Application Configuration](/guide_single_app_init_finished.png)

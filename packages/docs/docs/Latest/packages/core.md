@@ -2,13 +2,13 @@
 
 ![version](https://img.shields.io/npm/v/@dify-chat/core) ![NPM Last Update](https://img.shields.io/npm/last-update/@dify-chat/core) ![NPM Downloads](https://img.shields.io/npm/dm/@dify-chat/core)
 
-`@dify-chat/core` 是 [Dify Chat](https://github.com/lexmin0412/dify-chat) 项目中的核心包，它提供了应用、对话等全局上下文的注入和获取功能。
+`@dify-chat/core` is the core package in the [Dify Chat](https://github.com/lexmin0412/dify-chat) project, providing global context injection and retrieval functionality for applications, conversations, etc.
 
-下面将介绍如何在你的应用中集成和使用它。
+The following will introduce how to integrate and use it in your application.
 
-## 安装
+## Installation
 
-通过 npm/yarn/pnpm 安装：
+Install via npm/yarn/pnpm:
 
 ```bash
 # npm
@@ -19,17 +19,17 @@ yarn add @dify-chat/core
 pnpm add @dify-chat/core
 ```
 
-## 使用方法
+## Usage
 
-### 全局上下文
+### Global Context
 
 #### AppContext
 
-`AppContext` 是应用上下文，提供了当前应用配置的获取和更新功能。
+`AppContext` is the application context, providing functionality to get and update the current application configuration.
 
 **AppContextProvider**
 
-在应用切换功能的最上层组件中使用 `AppContextProvider` 提供应用上下文：
+Use `AppContextProvider` in the top-level component with application switching functionality to provide application context:
 
 ```tsx
 import { AppContextProvider, ICurrentApp } from '@dify-chat/core';
@@ -41,7 +41,7 @@ const YourChatComponent = () => {
   const { user } = useDifyChat();
   const [appList, setAppList] = useState<ICurrentApp[]>([])
 
-  // 实现获取应用列表的逻辑
+  // Implement logic to get application list
   const getAppList = async () => {
     setAppList([...])
   }
@@ -55,16 +55,16 @@ const YourChatComponent = () => {
     apiKey: '',
   }))
 
-  // 定义获取应用参数的函数
+  // Define function to get application parameters
   const getAppInfo = async() => {
-    // 先更新 difyApi 的参数
+    // First update difyApi parameters
     difyApi.updateOptions({
       user,
       apiBase: newApp.requestConfig.apiBase,
       apiKey: newApp.requestConfig.apiKey,
     })
     setAppLoading(true)
-    // 根据新的 currentAppId 获取新的应用信息
+    // Get new application information based on new currentAppId
     const appConfig = appList.find(item => item.id === currentAppId)
     const difyAppInfo = await difyApi.getAppInfo()
 		const appParameters = await getAppParameters(difyApi)
@@ -80,12 +80,12 @@ const YourChatComponent = () => {
 		})
   }
 
-  // 初始化时获取应用列表
+  // Get application list on initialization
   useEffect(()=>{
     getAppList()
   }, [])
 
-  // 监听 currentAppId 变化，更新当前应用配置
+  // Listen to currentAppId changes, update current application configuration
   useEffect(() => {
     updateAppInfo()
   }, [currentAppId])
@@ -101,7 +101,7 @@ const YourChatComponent = () => {
 			}}
 		>
       Your Chat Inner Component
-      <Button onClick={()=>setCurrentAppId('new-app-id')}>切换应用</Button>
+      <Button onClick={()=>setCurrentAppId('new-app-id')}>Switch Application</Button>
     </>
   )
 }
@@ -109,24 +109,24 @@ const YourChatComponent = () => {
 
 **useAppContext hook**
 
-在你的子组件中使用 `useAppContext` 钩子获取应用上下文：
+Use the `useAppContext` hook in your child components to get application context:
 
 ```tsx
 import { useAppContext } from '@dify-chat/core';
 
 const YourInnerComponent = () => {
   const { currentApp, currentAppId } = useAppContext();
-  console.log(`当前应用ID：${currentAppId}`, `当前应用：${currentApp}`);
+  console.log(`Current Application ID: ${currentAppId}`, `Current Application: ${currentApp}`);
 };
 ```
 
-#### 对话上下文
+#### Conversation Context
 
-`ConversationContext` 是对话上下文，提供了对话相关的功能，包括获取/更新对话列表、获取/更新当前对话 ID、获取当前对话信息等。
+`ConversationContext` is the conversation context, providing conversation-related functionality, including getting/updating conversation lists, getting/updating current conversation ID, getting current conversation information, etc.
 
 **ConversationContextProvider**
 
-在具备对话切换功能的最上层组件中使用 `ConversationContextProvider` 提供对话上下文：
+Use `ConversationContextProvider` in the top-level component with conversation switching functionality to provide conversation context:
 
 ```tsx
 import { ConversationsContextProvider } from '@dify-chat/core';
@@ -136,7 +136,7 @@ const YourChatComponent = () => {
   const [conversations, setConversations] = useState([])
   const [currentConversationId, setCurrentConversationId] = useState('')
 
-  // 实现获取对话列表的逻辑
+  // Implement logic to get conversation list
   const listConversations = async () => {
     setConversations([...])
   }
@@ -153,14 +153,14 @@ const YourChatComponent = () => {
       setCurrentConversationId,
     }}>
       <YourInnerComponent />
-    </ConversationContextProvider>
+    </ConversationsContextProvider>
   )
 }
 ```
 
 **`useConversationsContext` hook**
 
-在你的子组件中使用 `useConversationsContext` 钩子获取对话上下文：
+Use the `useConversationsContext` hook in your child components to get conversation context:
 
 ```tsx
 import { useConversationsContext } from '@dify-chat/core';
@@ -168,8 +168,8 @@ import { useConversationsContext } from '@dify-chat/core';
 const YourInnerComponent = () => {
   const { conversations, currentConversationId } = useConversationsContext();
   console.log(
-    `当前对话ID：${currentConversationId}`,
-    `对话列表：${conversations}`,
+    `Current Conversation ID: ${currentConversationId}`,
+    `Conversation List: ${conversations}`,
   );
 };
 ```

@@ -1,81 +1,81 @@
-# 介绍
+# Introduction
 
-**Dify Chat**，一个基于 Dify API 的 AI Web 应用，支持单应用、多应用等多种模式，提供开箱即用的应用配置管理功能。支持运行不同类型的 Dify 应用，适配深度思考、思维链、图表等多种形式输出。
+**Dify Chat** is an AI Web application based on the Dify API, supporting single-app, multi-app, and other modes, providing out-of-the-box application configuration management functionality. Supports running different types of Dify applications and adapting to various output forms such as deep thinking, chain of thought, charts, etc.
 
-如果你觉得这个项目还不错的话，请动动你的小手指点个 Star ⭐️ 吧～
+If you think this project is good, please give it a Star ⭐️～
 
 ![Dify Chat](/banner.png)
 
-## 为什么选择 Dify Chat
+## Why Choose Dify Chat
 
-Dify Chat 围绕以下几个关键特性进行设计：
+Dify Chat is designed around the following key features:
 
-- **低成本**：仅需 30 秒填写应用信息，即可开始使用
-- **多场景**：提供单应用、多应用模式，致力于满足不同场景下的深度应用
-- **可扩展**：源码全开放，你可以 Fork 原仓库后进行二开，扩展任意功能
-- **多种实现**：提供 React SPA 和 Next.js 两种技术栈实现，满足不同开发者的喜好
-- **主题定制**：兼容 TailwindCSS + Ant Design 设计系统，自由修改主题色
-- **响应式设计**：支持 PC、移动端访问，多端功能同步
-- **丰富的内容支持**：支持渲染图片、视频、代码、图表等丰富的交互性内容，让 AI 自由发挥
+- **Low Cost**: Just 30 seconds to fill in application information, then start using
+- **Multi-Scenario**: Provides single-app and multi-app modes, committed to meeting deep application needs in different scenarios
+- **Extensible**: Source code is fully open. You can Fork the original repository and modify it to extend any functionality
+- **Multiple Implementations**: Provides React SPA and Next.js implementations to meet different developers' preferences
+- **Theme Customization**: Compatible with TailwindCSS + Ant Design design system, freely modify theme colors
+- **Responsive Design**: Supports PC and mobile access, multi-device functionality synchronization
+- **Rich Content Support**: Supports rendering rich interactive content such as images, videos, code, charts, etc., giving AI free rein to express itself
 
-### 低成本
+### Low Cost
 
-只需从 Dify 获取应用 API Key，即可在 Dify Chat 快速配置一个应用并开始使用。
+Just get the application API Key from Dify, and you can quickly configure an application in Dify Chat and start using it.
 
-### 多场景
+### Multi-Scenario
 
-Dify Chat 提供两种应用模式来满足不同的使用场景：
+Dify Chat provides two application modes to meet different usage scenarios:
 
-**单应用模式**：适合个人用户或小型团队，专注于单一 AI 应用的深度使用。你可以配置一个聊天机器人、知识问答助手或创意写作工具，享受专注的 AI 交互体验。
+**Single Application Mode**: Suitable for individual users or small teams, focusing on in-depth use of a single AI application. You can configure a chatbot, knowledge Q&A assistant, or creative writing tool, enjoying a focused AI interaction experience.
 
-**多应用模式**：专为企业级用户设计，支持同时管理多个 Dify 应用。无论是客服系统、内容创作、数据分析还是代码助手，你都可以在一个界面中无缝切换，实现工作流程的统一管理。这种模式特别适合需要多 AI 能力协同的企业场景，让团队成员能够根据具体需求选择合适的 AI 助手。
+**Multiple Application Mode**: Designed for enterprise users, supporting simultaneous management of multiple Dify applications. Whether it's customer service systems, content creation, data analysis, or code assistants, you can seamlessly switch between them in one interface, achieving unified workflow management. This mode is particularly suitable for enterprise scenarios that require multiple AI capabilities to work together, allowing team members to choose the appropriate AI assistant according to specific needs.
 
-### 可扩展
+### Extensible
 
-Dify Chat 采用 MIT 开源协议，所有源代码完全开放。你可以：
+Dify Chat uses the MIT open source license, and all source code is fully open. You can:
 
-- **Fork 仓库**：在 GitHub 上 Fork 原仓库，获得完整的项目代码
-- **自由修改**：根据业务需求修改界面、添加新功能或优化现有逻辑
-- **二次开发**：基于现有架构进行深度定制，打造专属的 AI 应用平台
-- **贡献代码**：将改进的功能通过 Pull Request 回馈社区，帮助项目持续完善
+- **Fork Repository**: Fork the original repository on GitHub to get the complete project code
+- **Free Modification**: Modify the interface, add new features, or optimize existing logic according to business needs
+- **Secondary Development**: Deep customization based on the existing architecture to create your own AI application platform
+- **Contribute Code**: Give back improvements to the community through Pull Requests to help the project continue to improve
 
-无论是简单的主题定制，还是复杂的业务逻辑扩展，Dify Chat 的模块化设计都能让你轻松上手，快速实现个性化需求。
+Whether it's simple theme customization or complex business logic extension, Dify Chat's modular design allows you to get started easily and quickly achieve personalized needs.
 
-### 多种实现
+### Multiple Implementations
 
-Dify Chat 提供了两种主流的技术栈实现，让开发者可以根据项目需求和个人喜好选择最适合的方案：
+Dify Chat provides two mainstream technology stack implementations, allowing developers to choose the most suitable solution according to project needs and personal preferences:
 
-| 特性         | React SPA 版本                                            | Next.js 版本                            |
+| Feature | React SPA Version | Next.js Version |
 | ------------ | --------------------------------------------------------- | --------------------------------------- |
-| **构建体积** | 轻量快速，构建体积小                                      | 相对较大，包含服务端功能                |
-| **开发体验** | 开发体验更好，性能要求较低                                | 开发体验优秀，支持热重载                |
-| **部署方式** | 简单部署，可轻松部署到任何静态托管服务（如 GitHub Pages） | 需要支持 Node.js 的托管服务             |
-| **功能扩展** | 功能扩展简单，学习成本低                                  | 功能扩展强大，支持全栈开发              |
-| **首屏加载** | 客户端渲染，首屏加载相对较慢                              | 服务端渲染，首屏加载速度快              |
-| **SEO 表现** | SEO 表现一般                                              | SEO 表现优秀                            |
-| **安全性**   | 前端暴露，存在密钥泄露风险                                | 内置 Server Actions，可规避密钥泄露风险 |
-| **适用场景** | 个人项目、快速原型、静态展示                              | 生产环境、企业级应用、需要 SEO 的场景   |
+| **Build Size** | Lightweight and fast, small build size | Relatively large, includes server-side functionality |
+| **Development Experience** | Better development experience, lower performance requirements | Excellent development experience, supports hot reload |
+| **Deployment Method** | Simple deployment, can easily deploy to any static hosting service (such as GitHub Pages) | Requires hosting service that supports Node.js |
+| **Feature Extension** | Simple feature extension, low learning cost | Powerful feature extension, supports full-stack development |
+| **First Screen Load** | Client-side rendering, relatively slow first screen load | Server-side rendering, fast first screen load |
+| **SEO Performance** | Average SEO performance | Excellent SEO performance |
+| **Security** | Frontend exposed, risk of key leakage | Built-in Server Actions, can avoid key leakage risk |
+| **Use Cases** | Personal projects, rapid prototyping, static display | Production environment, enterprise applications, scenarios requiring SEO |
 
-无论你选择哪种反感，Dify Chat 都提供了完整的文档和示例代码，确保你能够快速上手并成功部署。如果你更注重简单性和快速部署，推荐使用 React SPA 版本；如果你想用于生产环境，又不想依赖额外的后端服务，Next.js 版本将是更好的选择。
+Regardless of which approach you choose, Dify Chat provides complete documentation and example code to ensure you can get started quickly and deploy successfully. If you focus more on simplicity and quick deployment, the React SPA version is recommended; if you want to use it in a production environment and don't want to rely on additional backend services, the Next.js version will be a better choice.
 
-### 主题定制
+### Theme Customization
 
-Dify Chat 基于 TailwindCSS 和 Ant Design 构建，提供了灵活的主题定制能力，让你可以根据品牌需求或个人喜好轻松调整界面风格。
+Dify Chat is built on TailwindCSS and Ant Design, providing flexible theme customization capabilities, allowing you to easily adjust the interface style according to brand needs or personal preferences.
 
-### 响应式设计
+### Responsive Design
 
-Dify Chat 采用响应式设计理念，确保在不同设备上都能提供一致且优秀的用户体验。
+Dify Chat adopts responsive design principles, ensuring consistent and excellent user experience across different devices.
 
-### 丰富的内容支持
+### Rich Content Support
 
-Dify Chat 支持多种内容类型的渲染，让 AI 的回复更加生动和实用：
+Dify Chat supports rendering multiple content types, making AI responses more vivid and practical:
 
-**图片和视频渲染**：支持渲染图片和视频内容，在进行内容表达时，丰富多彩的图片和动态视频往往比文字更加深入人心，特别适合教程、演示等场景。
+**Image and Video Rendering**: Supports rendering image and video content. When expressing content, rich images and dynamic videos are often more impactful than text, especially suitable for tutorials, demonstrations, and other scenarios.
 
-**代码高亮**：内置代码语法高亮功能，支持多种编程语言，让代码展示更加清晰易读，提升开发者的使用体验。
+**Code Highlighting**: Built-in code syntax highlighting functionality, supporting multiple programming languages, making code display clearer and more readable, improving the developer experience.
 
-**图表可视化**：支持各种类型的图表渲染，如 Mermaid、Echarts 等，帮助用户更好地理解和分析数据。
+**Chart Visualization**: Supports various types of chart rendering, such as Mermaid, Echarts, etc., helping users better understand and analyze data.
 
-**交互式元素**：支持表单等交互组件，让用户可以直接在对话界面中执行操作，提升交互效率。
+**Interactive Elements**: Supports interactive components such as forms, allowing users to perform operations directly in the conversation interface, improving interaction efficiency.
 
-丰富的内容支持让你可以在 Dify 应用中进行任意编排，以最适合的方式表达信息，无论是技术文档、数据分析报告，还是创意内容创作，都能得到最佳的展示效果。
+Rich content support allows you to arrange content in Dify applications in any way, expressing information in the most suitable way. Whether it's technical documentation, data analysis reports, or creative content creation, you can get the best display results.

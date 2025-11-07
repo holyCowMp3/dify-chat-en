@@ -1,7 +1,7 @@
-# 选择适合你的模式
+# Choose the Mode That Suits You
 
-Dify Chat 提供两种应用模式来满足不同的使用场景：
+Dify Chat provides two application modes to meet different usage scenarios:
 
-**单应用模式**：适合个人用户或小型团队，专注于单一 AI 应用的深度使用。你可以配置一个聊天机器人、知识问答助手或创意写作工具，享受专注的 AI 交互体验。
+**Single Application Mode**: Suitable for individual users or small teams, focusing on in-depth use of a single AI application. You can configure a chatbot, knowledge Q&A assistant, or creative writing tool, enjoying a focused AI interaction experience.
 
-**多应用模式**：专为企业级用户设计，支持同时管理多个 Dify 应用。无论是客服系统、内容创作、数据分析还是代码助手，你都可以在一个界面中无缝切换，实现工作流程的统一管理。这种模式特别适合需要多 AI 能力协同的企业场景，让团队成员能够根据具体需求选择合适的 AI 助手。
+**Multiple Application Mode**: Designed for enterprise users, supporting simultaneous management of multiple Dify applications. Whether it's customer service systems, content creation, data analysis, or code assistants, you can seamlessly switch between them in one interface, achieving unified workflow management. This mode is particularly suitable for enterprise scenarios that require multiple AI capabilities to work together, allowing team members to choose the appropriate AI assistant according to specific needs.

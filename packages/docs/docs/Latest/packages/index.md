@@ -1,6 +1,6 @@
-# 介绍
+# Introduction
 
-Dify Chat 衍生出以下子包，可通过 npm 独立安装使用。
+Dify Chat has derived the following sub-packages that can be installed and used independently via npm.
 
 - `@dify-chat/api`
 - `@dify-chat/core`

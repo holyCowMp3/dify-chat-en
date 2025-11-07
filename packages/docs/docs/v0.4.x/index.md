@@ -3,11 +3,11 @@ pageType: home
 
 hero:
   name: Dify Chat
-  text: 更贴近业务的 Dify Web APP
-  # tagline: 快速部署
+  text: A Dify Web APP Closer to Business Needs
+  # tagline: Quick Deployment
   actions:
     - theme: brand
-      text: 快速开始
+      text: Get Started
       link: /guide/start/introduction
     - theme: alt
       text: GitHub
@@ -16,22 +16,22 @@ hero:
     src: /rspress-icon.png
     alt: Logo
 features:
-  - title: 低成本接入
-    details: 仅需 30 秒填写应用信息，即可开始使用，开箱即用的示例应用，助你快速体验。
+  - title: Low-Cost Access
+    details: Just 30 seconds to fill in application information, then start using. Out-of-the-box example applications help you quickly experience.
     icon: 🏃🏻‍♀️
-  - title: 多场景适用
-    details: 提供单应用、多应用模式，致力于满足不同场景下的深度应用。
+  - title: Multi-Scenario Applicable
+    details: Provides single-app and multi-app modes, committed to meeting deep application needs in different scenarios.
     icon: 📦
-  - title: 功能可扩展
-    details: 源码全开放，你可以 Fork 原仓库后进行二开，扩展任意功能。
+  - title: Extensible Functionality
+    details: Source code is fully open. You can Fork the original repository and modify it to extend any functionality.
     icon: 🎨
-  - title: 实现多样化
-    details: 提供 React SPA 和 Next.js 两种技术栈实现，满足不同开发者的喜好。
+  - title: Diverse Implementations
+    details: Provides React SPA and Next.js implementations to meet different developers' preferences.
     icon: 🌍
-  - title: 主题可定制
-    details: 兼容 TailwindCSS + Ant Design 设计系统，自由修改主题。
+  - title: Customizable Theme
+    details: Compatible with TailwindCSS + Ant Design design system, freely modify themes.
     icon: 🌈
-  - title: 丰富内容支持
-    details: 支持渲染图片、视频、代码、图表等丰富的交互性内容，让 AI 自由发挥。
+  - title: Rich Content Support
+    details: Supports rendering rich interactive content such as images, videos, code, charts, etc., giving AI free rein to express itself.
     icon: 🔥
 ---

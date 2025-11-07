@@ -1,28 +1,28 @@
-# 自适应主题
+# Adaptive Theme
 
-在页面右上角，可以看到一个电脑主题切换图标，它就是主题切换组件。
+In the upper right corner of the page, you can see a computer theme switch icon, which is the theme switch component.
 
-默认情况下，主题模式为跟随系统自适应，在你的系统夜间模式生效后访问页面，页面会自动切换到暗黑主题。
+By default, the theme mode follows the system adaptively. When you access the page after your system's night mode takes effect, the page will automatically switch to dark theme.
 
-系统内置两个主题：
+The system has two built-in themes:
 
-- 亮色主题
-- 暗黑主题
+- Light theme
+- Dark theme
 
-你可以选择切换以下主题模式：
+You can choose to switch the following theme modes:
 
-- **跟随系统**，当系统切换到夜间模式时，页面也会自动切换到暗黑主题，否则会切换到亮色主题
-- **浅色**，不论系统为何种模式，页面都会是亮色主题
-- **深色**，不论系统为何种模式，页面都会是暗黑主题
+- **Follow System**: When the system switches to night mode, the page will also automatically switch to dark theme, otherwise it will switch to light theme
+- **Light**: Regardless of the system mode, the page will be light theme
+- **Dark**: Regardless of the system mode, the page will be dark theme
 
 ![Dark Mode](/theme-selector.png)
 
-## 不同模式的页面样式示例
+## Page Style Examples for Different Modes
 
-亮色模式：
+Light mode:
 
-![亮色模式](/theme-light.png)
+![Light Mode](/theme-light.png)
 
-暗黑模式：
+Dark mode:
 
-![暗黑模式](/theme-dark.png)
+![Dark Mode](/theme-dark.png)

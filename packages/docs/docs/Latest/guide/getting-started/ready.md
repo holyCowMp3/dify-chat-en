@@ -1,12 +1,12 @@
-# 前置准备
+# Prerequisites
 
-## 部署环境
+## Deployment Environment
 
-在开始部署前，你需要准备好以下环境：
+Before starting deployment, you need to prepare the following environment:
 
 - Node.js >= 20
 - Pnpm >= 10.8.1
 
-## 数据库
+## Database
 
-最后启动项目即可。
+Finally, start the project.

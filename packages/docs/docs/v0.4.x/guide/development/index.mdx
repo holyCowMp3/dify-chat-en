@@ -1,33 +1,33 @@
 import { Tab, Tabs } from 'rspress/theme';
 
-# 本地开发与生产构建
+# Local Development and Production Build
 
-安装依赖:
+Install dependencies:
 
 ```bash
 pnpm install
 ```
 
-启动开发服务器：
+Start development server:
 
 <Tabs>
   <Tab label="React SPA">
 ```bash
-# 启动 React SPA 应用，支持子包热更新，无需提前构建
+# Start React SPA application, supports sub-package hot reload, no need to build in advance
 pnpm dev
 ```
 	</Tab>
   <Tab label="Next.js">
 ```bash
-# 由于 Next.js 暂不支持子包热更新，需要提前构建子包
+# Since Next.js does not support sub-package hot reload yet, sub-packages need to be built in advance
 pnpm build:pkgs
-# 启动 Next.js 应用
+# Start Next.js application
 pnpm dev:next
 ```
 	</Tab>
 </Tabs>
 
-构建生产版本：
+Build production version:
 
 <Tabs>
   <Tab label="React SPA">
@@ -42,7 +42,7 @@ pnpm build:next
 	</Tab>
 </Tabs>
 
-预览生产版本：
+Preview production version:
 
 <Tabs>
   <Tab label="React SPA">

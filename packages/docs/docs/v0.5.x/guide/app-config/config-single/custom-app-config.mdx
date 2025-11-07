@@ -1,62 +1,62 @@
 import { Tab, Tabs } from 'rspress/theme';
 
-# 自定义应用配置
+# Custom Application Configuration
 
-## 确定运行模式
+## Determine Running Mode
 
-在开始配置之前，确保你的运行模式是单应用模式。
+Before starting configuration, ensure your running mode is single application mode.
 
 <Tabs>
   <Tab label="React SPA">
 ```tsx title="packages/react-app/src/App.tsx"
-// 初始化全局运行时配置
+// Initialize global runtime configuration
 difyChatRuntimeConfig.init('singleApp')
 ```
 	</Tab>
   <Tab label="Next.js">
 ```bash title="packages/nextjs-app/.env"
-# 运行模式
+# Running mode
 RUNNING_MODE=singleApp
 ```
 	</Tab>
 </Tabs>
 
-## 自定义应用配置
+## Custom Application Configuration
 
-Dify Chat 已经内置了多种应用配置管理方式，满足不同场景需求，你可以根据你的需求选择合适的方式。
+Dify Chat has built-in multiple application configuration management methods to meet different scenario needs. You can choose the appropriate method according to your needs.
 
-### React SPA 版本
+### React SPA Version
 
-#### 配置入口
+#### Configuration Entry
 
 ```tsx title="packages/react-app/src/services/app/singleApp/index.ts"
-// 默认使用 LocalStorage 存储
+// Default uses LocalStorage storage
 export { appConfig } from './localstorage'
 ```
 
-#### 内置实现
+#### Built-in Implementations
 
 **1. LocalStorage**
 
-使用 LocalStorage 存储和修改数据，当用户切换浏览器后，数据会丢失，仅作为演示用。
+Uses LocalStorage for data storage and modification. When users switch browsers, data will be lost. Only for demonstration purposes.
 
-**2. 静态数据**
+**2. Static Data**
 
-使用静态数据进行存储，仅支持查询，适用于用户无需自定义应用的场景。
+Uses static data for storage, only supports querying, suitable for scenarios where users don't need to customize applications.
 
-定义配置：
+Define configuration:
 
 ```ts title="packages/react-app/src/services/app/singleApp/static-readonly/data.ts"
 import { AppModeEnums } from '@dify-chat/core'
 
 /**
- * 静态的应用配置，用于演示
+ * Static application configuration for demonstration
  */
 export const staticAppConfig = {
 	id: '0.270357011315995',
 	info: {
 		name: 'My Chatflow APP',
-		description: '我的 Chatflow 应用',
+		description: 'My Chatflow Application',
 		tags: [],
 		mode: AppModeEnums.CHATFLOW,
 	},
@@ -69,40 +69,40 @@ export const staticAppConfig = {
 
 **3. Restful API**
 
-通过接口获取和修改数据，推荐使用🌟
+Gets and modifies data through interfaces, recommended🌟
 
-默认请求的后端服务地址为 `http://localhost:5300`，你可以根据你的需要修改。
+The default backend service address is `http://localhost:5300`. You can modify it according to your needs.
 
-如果你的后端服务地址与默认地址不一致，只需在对应的 restful 实现中，修改调用的 BaseURL 即可。
+If your backend service address is different from the default address, just modify the BaseURL called in the corresponding restful implementation.
 
 ```ts title="packages/react-app/src/services/app/singleApp/restful.ts"
-// 比如你的自定义后端服务地址是 http://localhost:4567
+// For example, your custom backend service address is http://localhost:4567
 const API_BASE_URL = 'http://localhost:4567'
 ```
 
-你需要自行实现以下接口以完成应用配置的读取和保存：
+You need to implement the following interfaces yourself to complete application configuration reading and saving:
 
-| 接口名称 | 请求方法 | 接口路径 | 请求参数 | 返回参数 |
+| Interface Name | Request Method | Interface Path | Request Parameters | Return Parameters |
 |---------|----------|----------|----------|----------|
-| 获取 App 配置详情 | GET | `/app` | 无 | `IDifyAppItem` |
-| 保存 App 配置 | POST | `/app` | `IDifyAppItem` | 无 |
+| Get App Configuration Details | GET | `/app` | None | `IDifyAppItem` |
+| Save App Configuration | POST | `/app` | `IDifyAppItem` | None |
 
-### Next.js 版本
+### Next.js Version
 
-#### 配置入口
+#### Configuration Entry
 
 ```ts title="packages/nextjs-app/services/app/singleApp/index.ts"
-// 使用 fs 实现
+// Use fs implementation
 export { appConfig } from "./fs";
 ```
 
-#### 内置实现
+#### Built-in Implementations
 
-**1. 本地文件存储**
+**1. Local File Storage**
 
-使用本地文件进行存储，支持读取和修改，但存在丢失数据的风险。
+Uses local files for storage, supports reading and modification, but has the risk of data loss.
 
-配置示例：
+Configuration example:
 
 ```json title="packages/nextjs-app/.dify-chat/storage/app.config.json"
 {
@@ -110,8 +110,8 @@ export { appConfig } from "./fs";
     "name": "Chatflow Demo",
     "description": "",
     "tags": [
-      "参数",
-      "测试"
+      "Parameter",
+      "Test"
     ],
     "mode": "advanced-chat",
     "author_name": "Dify"
@@ -139,20 +139,20 @@ export { appConfig } from "./fs";
 
 **2. Restful API**
 
-通过 API 接口管理，支持读取和修改，推荐使用🌟
+Manages through API interfaces, supports reading and modification, recommended🌟
 
-默认请求的后端服务地址为 `http://localhost:5300`，你可以根据你的需要修改。
+The default backend service address is `http://localhost:5300`. You can modify it according to your needs.
 
-如果你的后端服务地址与默认地址不一致，只需在对应的 restful 实现中，修改调用的 BaseURL 即可。
+If your backend service address is different from the default address, just modify the BaseURL called in the corresponding restful implementation.
 
 ```ts title="packages/nextjs-app/services/app/singleApp/restful.ts"
-// 比如你的自定义后端服务地址是 http://localhost:4567
+// For example, your custom backend service address is http://localhost:4567
 const API_BASE_URL = 'http://localhost:4567'
 ```
 
-你需要自行实现以下接口以完成应用配置的读取和保存：
+You need to implement the following interfaces yourself to complete application configuration reading and saving:
 
-| 接口名称 | 请求方法 | 接口路径 | 请求参数 | 返回参数 |
+| Interface Name | Request Method | Interface Path | Request Parameters | Return Parameters |
 |---------|----------|----------|----------|----------|
-| 获取 App 配置详情 | GET | `/app` | 无 | `IDifyAppItem` |
-| 保存 App 配置 | POST | `/app` | `IDifyAppItem` | 无 |
+| Get App Configuration Details | GET | `/app` | None | `IDifyAppItem` |
+| Save App Configuration | POST | `/app` | `IDifyAppItem` | None |

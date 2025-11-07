@@ -1,3 +1,3 @@
-# 从历史版本升级
+# Upgrading from Previous Versions
 
-v0.5.0 引入了应用配置的持久化存储，完成了用户端和管理端的功能拆分，移除了 Next.js 版本的用户端实现，是一个跨越性的版本。
+v0.5.0 introduced persistent storage for application configuration, completed the separation of user-side and admin-side functionality, and removed the Next.js version of the user-side implementation. It is a milestone version.
