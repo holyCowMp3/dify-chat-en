@@ -1,6 +1,6 @@
 # `@dify-chat/components`
 
-用于构建 Dify Chat Web 的 React 组件库。
+React component library used to build Dify Chat Web.
 
 ## Setup
 

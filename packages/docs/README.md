@@ -1,26 +1,26 @@
-# Dify Chat 文档站点
+# Dify Chat Documentation Site
 
-## 安装依赖
+## Install Dependencies
 
 ```bash
 pnpm install
 ```
 
-## 开始使用
+## Getting Started
 
-启动开发服务器:
+Start the development server:
 
 ```bash
 pnpm dev
 ```
 
-构建生产静态站点：
+Build the production static site:
 
 ```bash
 pnpm build
 ```
 
-本地预览生产构建产物：
+Preview the production build locally:
 
 ```bash
 pnpm preview

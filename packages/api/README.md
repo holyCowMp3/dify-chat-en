@@ -2,13 +2,13 @@
 
 ![version](https://img.shields.io/npm/v/@dify-chat/api) ![NPM Last Update](https://img.shields.io/npm/last-update/@dify-chat/api) ![NPM Downloads](https://img.shields.io/npm/dm/@dify-chat/api)
 
-`@dify-chat/api` 是 [Dify Chat](https://github.com/lexmin0412/dify-chat) 项目中的一个包，它提供了一套完整的方法来操作 Dify 应用，包括获取应用信息、管理会话、发送消息等功能。
+`@dify-chat/api` is a package inside the [Dify Chat](https://github.com/lexmin0412/dify-chat) project. It offers a comprehensive set of methods for working with Dify apps, including fetching app details, managing conversations, and sending messages.
 
-下面将介绍如何在你的应用中集成和使用它。
+The sections below explain how to integrate and use it in your own application.
 
-## 安装
+## Installation
 
-通过 npm/yarn/pnpm 安装：
+Install via npm, yarn, or pnpm:
 
 ```bash
 # npm
@@ -21,59 +21,59 @@ yarn add @dify-chat/api
 pnpm add @dify-chat/api
 ```
 
-## 基本使用
+## Basic Usage
 
 ```ts
 import { createDifyApiInstance, DifyApi } from '@dify-chat/api'
 
-// 创建实例方式1：使用工厂函数
+// Option 1: create an instance via the factory function
 const api = createDifyApiInstance({
   user: 'user123',
   apiBase: 'https://api.dify.ai/v1',
   apiKey: 'app-YOUR_API_KEY',
 })
 
-// 创建实例方式2：直接实例化
+// Option 2: instantiate the class directly
 const api2 = new DifyApi({
   user: 'user123',
   apiBase: 'https://api.dify.ai/v1',
   apiKey: 'app-YOUR_API_KEY',
 })
 
-// 调用API
+// Call the API
 api.getAppInfo().then(appInfo => {
   console.log(appInfo)
 })
 ```
 
-## API 实例配置
+## API Instance Options
 
-实例化 `DifyApi` 时需要提供以下配置：
+Provide the following options when instantiating `DifyApi`:
 
 ```ts
 interface IDifyApiOptions {
-  /**
-   * 用户标识
-   */
+    /**
+     * User identifier
+     */
   user: string
-  /**
-   * API 前缀，默认 https://api.dify.ai/v1
-   */
+    /**
+     * API base URL, defaults to https://api.dify.ai/v1
+     */
   apiBase: string
-  /**
-   * Dify APP API 密钥
-   */
+    /**
+     * Dify app API key
+     */
   apiKey: string
 }
 ```
 
-## API 方法
+## API Methods
 
-> 注意：开发此包的初衷是为了实现主项目 Dify Chat 的相关功能，所以并不是所有的官方 API 都会存在对应的方法。如需调用其他 API，请自行参考官方文档。
+> Note: This package was created to support the primary Dify Chat project, so it does not wrap every official API. Refer to the official documentation if you need endpoints that are not covered here.
 
-### 更新 API 配置
+### Update API Options
 
-当需要切换应用时，可以更新 API 配置。
+Update the API configuration when you need to switch applications.
 
 ```ts
 api.updateOptions({
@@ -83,13 +83,13 @@ api.updateOptions({
 })
 ```
 
-### 获取应用基本信息
+### Get Basic App Info
 
 ```ts
 const appInfo = await api.getAppInfo()
 ```
 
-**返回值类型：**
+**Return type:**
 
 ```ts
 interface IGetAppInfoResponse {
@@ -99,13 +99,13 @@ interface IGetAppInfoResponse {
 }
 ```
 
-### 获取应用 Meta 信息
+### Get App Meta
 
 ```ts
 const appMeta = await api.getAppMeta()
 ```
 
-**返回值类型：**
+**Return type:**
 
 ```ts
 interface IGetAppMetaResponse {
@@ -119,13 +119,13 @@ interface IGetAppMetaResponse {
 }
 ```
 
-### 获取应用参数
+### Get App Parameters
 
 ```ts
 const appParameters = await api.getAppParameters()
 ```
 
-**返回值类型：**
+**Return type:**
 
 ```ts
 interface IGetAppParametersResponse {
@@ -167,15 +167,15 @@ interface IGetAppParametersResponse {
 }
 ```
 
-### 会话管理
+### Conversation Management
 
-#### 获取会话列表
+#### List Conversations
 
 ```ts
 const conversations = await api.listConversations({ limit: 20 })
 ```
 
-**参数：**
+**Parameters:**
 
 ```ts
 interface IListConversationsRequest {
@@ -183,7 +183,7 @@ interface IListConversationsRequest {
 }
 ```
 
-**返回值类型：**
+**Return type:**
 
 ```ts
 interface IGetConversationListResponse {
@@ -201,22 +201,22 @@ interface IConversationItem {
 }
 ```
 
-#### 重命名会话
+#### Rename a Conversation
 
 ```ts
 await api.renameConversation({
   conversation_id: 'conversation_id',
-  name: '新的会话名称',
+  name: 'New conversation name',
 })
 
-// 自动生成名称
+// Auto-generate the name
 await api.renameConversation({
   conversation_id: 'conversation_id',
   auto_generate: true,
 })
 ```
 
-**参数：**
+**Parameters:**
 
 ```ts
 {
@@ -226,19 +226,19 @@ await api.renameConversation({
 }
 ```
 
-#### 删除会话
+#### Delete a Conversation
 
 ```ts
 await api.deleteConversation('conversation_id')
 ```
 
-#### 获取会话历史消息
+#### Get Conversation History
 
 ```ts
 const history = await api.listMessages('conversation_id')
 ```
 
-**返回值类型：**
+**Return type:**
 
 ```ts
 interface IListMessagesResponse {
@@ -263,25 +263,25 @@ interface IMessageItem {
 }
 ```
 
-### 消息相关
+### Messages
 
-#### 发送消息
+#### Send a Message
 
 ```ts
 const response = await api.sendMessage({
-  conversation_id: 'conversation_id', // 可选，不传则创建新会话
+  conversation_id: 'conversation_id', // Optional; omit to create a new conversation
   inputs: {
-    // 输入参数，键值对形式
+    // Input parameters as key-value pairs
     param1: 'value1',
   },
-  files: [], // 附件，可以是远程URL或本地上传的文件ID
+  files: [], // Attachments, either remote URLs or IDs of locally uploaded files
   user: 'user123',
   response_mode: 'streaming',
-  query: '你好，请问...',
+  query: 'Hello, can you...',
 })
 ```
 
-**参数：**
+**Parameters:**
 
 ```ts
 {
@@ -294,7 +294,7 @@ const response = await api.sendMessage({
 }
 ```
 
-#### 文件类型定义
+#### File Type Definitions
 
 ```ts
 export type IFileType = 'document' | 'image' | 'audio' | 'video' | 'custom'
@@ -316,13 +316,13 @@ export interface IFileLocal extends IFileBase {
 export type IFile = IFileRemote | IFileLocal
 ```
 
-#### 停止生成
+#### Stop Generation
 
 ```ts
 await api.stopTask('taskId')
 ```
 
-#### 获取下一轮建议问题
+#### Fetch Suggested Follow-up Questions
 
 ```ts
 const suggestions = await api.getNextSuggestions({
@@ -330,7 +330,7 @@ const suggestions = await api.getNextSuggestions({
 })
 ```
 
-**返回值类型：**
+**Return type:**
 
 ```ts
 {
@@ -338,17 +338,17 @@ const suggestions = await api.getNextSuggestions({
 }
 ```
 
-#### 消息反馈
+#### Message Feedback
 
 ```ts
 await api.createMessageFeedback({
   messageId: 'message_id',
   rating: 'like', // 'like' | 'dislike' | null
-  content: '反馈内容',
+  content: 'Feedback message',
 })
 ```
 
-**参数：**
+**Parameters:**
 
 ```ts
 {
@@ -358,19 +358,19 @@ await api.createMessageFeedback({
 }
 ```
 
-### 文件操作
+### File Operations
 
-#### 上传文件
+#### Upload a File
 
 ```ts
 const fileInfo = await api.uploadFile(file)
 ```
 
-**参数：**
+**Parameters:**
 
-- `file`: 浏览器 File 对象
+- `file`: Browser `File` object
 
-**返回值类型：**
+**Return type:**
 
 ```ts
 interface IUploadFileResponse {
@@ -384,23 +384,23 @@ interface IUploadFileResponse {
 }
 ```
 
-### 语音相关
+### Voice Features
 
-#### 文字转语音
+#### Text to Speech
 
 ```ts
-// 通过消息ID转换
+// Convert by message ID
 const audioResponse = await api.text2Audio({
   message_id: 'message_id',
 })
 
-// 通过文本内容转换
+// Convert raw text
 const audioResponse2 = await api.text2Audio({
-  text: '要转换的文本内容',
+  text: 'Text to convert',
 })
 ```
 
-**参数：**
+**Parameters:**
 
 ```ts
 | {
@@ -411,17 +411,17 @@ const audioResponse2 = await api.text2Audio({
   }
 ```
 
-#### 语音转文字
+#### Speech to Text
 
 ```ts
 const textResponse = await api.audio2Text(audioFile)
 ```
 
-**参数：**
+**Parameters:**
 
-- `audioFile`: 语音文件。支持格式：['mp3', 'mp4', 'mpeg', 'mpga', 'm4a', 'wav', 'webm'] 文件大小限制：15MB
+- `audioFile`: Audio file. Supported formats: `['mp3', 'mp4', 'mpeg', 'mpga', 'm4a', 'wav', 'webm']`. File size limit: 15 MB.
 
-**返回值类型：**
+**Return type:**
 
 ```ts
 interface IAudio2TextResponse {
@@ -429,23 +429,23 @@ interface IAudio2TextResponse {
 }
 ```
 
-### 工作流相关
+### Workflow
 
-#### 执行 workflow
+#### Run a Workflow
 
 ```ts
 const workflowResponse = await api.runWorkflow({
   inputs: {
-    // 输入参数，键值对形式
+    // Input parameters as key-value pairs
     param1: 'value1',
     param2: [
-      /* 文件数组 */
+      /* Array of files */
     ],
   },
 })
 ```
 
-参数：
+Parameters:
 
 ```ts
 {
@@ -453,7 +453,7 @@ const workflowResponse = await api.runWorkflow({
 }
 ```
 
-#### 获取 workflow 执行情况
+#### Get Workflow Result
 
 ```ts
 const workflowResult = await api.getWorkflowResult({
@@ -461,7 +461,7 @@ const workflowResult = await api.getWorkflowResult({
 })
 ```
 
-参数：
+Parameters:
 
 ```ts
 {
@@ -469,52 +469,52 @@ const workflowResult = await api.getWorkflowResult({
 }
 ```
 
-响应体：
+Response body:
 
 ```ts
 {
-  /** workflow 执行 ID */
+  /** Workflow run ID */
   id: string
-  /** 关联的 Workflow ID */
+  /** Associated workflow ID */
   workflow_id: string
-  /** 执行状态 running / succeeded / failed / stopped */
+  /** Execution status: running / succeeded / failed / stopped */
   status: string
-  /** 任务输入内容 */
+  /** Task input payload */
   inputs: object
-  /** 任务输出内容 */
+  /** Task output payload */
   outputs: object
-  /** 错误原因 */
+  /** Error message */
   error: string
-  /** 任务执行总步数 */
+  /** Total steps executed */
   total_steps: number
-  /** 任务执行总 tokens */
+  /** Total tokens consumed */
   total_tokens: number
-  /** 任务开始时间 */
+  /** Start timestamp */
   created_at: number
-  /** 任务结束时间 */
+  /** Finish timestamp */
   finished_at: number
-  /** 耗时(s) */
+  /** Duration in seconds */
   elapsed_time: number
 }
 ```
 
-### 文本生成相关
+### Text Generation
 
-#### 执行文本生成
+#### Run a Completion
 
 ```ts
 const completionResponse = await api.completion({
   inputs: {
-    // 输入参数，键值对形式
+    // Input parameters as key-value pairs
     param1: 'value1',
     param2: [
-      /* 文件数组 */
+      /* Array of files */
     ],
   },
 })
 ```
 
-参数：
+Parameters:
 
 ```ts
 {
@@ -522,9 +522,9 @@ const completionResponse = await api.completion({
 }
 ```
 
-## 完整事件类型
+## Event Types
 
-API 响应中包含各种事件类型，完整定义如下：
+API responses contain several event types. The full definition is below:
 
 ```ts
 export enum EventEnum {
@@ -545,37 +545,37 @@ export enum EventEnum {
 }
 ```
 
-## 示例：完整的对话流程
+## Example: Full Conversation Flow
 
 ```ts
 import { createDifyApiInstance } from '@dify-chat/api'
 
 async function chatExample() {
-  // 1. 创建API实例
+  // 1. Create the API instance
   const api = createDifyApiInstance({
     user: 'user123',
     apiBase: 'https://api.dify.ai/v1',
     apiKey: 'app-YOUR_API_KEY',
   })
 
-  // 2. 获取应用信息
+  // 2. Fetch app info
   const appInfo = await api.getAppInfo()
-  console.log('应用信息:', appInfo)
+  console.log('App info:', appInfo)
 
-  // 3. 获取应用参数
+  // 3. Fetch app parameters
   const appParams = await api.getAppParameters()
-  console.log('应用参数:', appParams)
+  console.log('App parameters:', appParams)
 
-  // 4. 发送消息
+  // 4. Send a message
   const messageStream = await api.sendMessage({
     inputs: {},
     files: [],
     user: 'user123',
     response_mode: 'streaming',
-    query: '你好，请介绍一下自己',
+    query: 'Hi, please introduce yourself',
   })
 
-  // 5. 处理流式响应
+  // 5. Handle the streaming response
   const reader = messageStream.body.getReader()
   const decoder = new TextDecoder()
 
@@ -589,14 +589,14 @@ async function chatExample() {
     for (const line of lines) {
       if (line.startsWith('data: ')) {
         const data = JSON.parse(line.substring(6))
-        console.log('收到事件:', data.event)
+        console.log('Received event:', data.event)
 
         if (data.event === 'message') {
-          console.log('AI回复内容:', data.answer)
+          console.log('AI reply:', data.answer)
         } else if (data.event === 'error') {
-          console.error('错误:', data.message)
+          console.error('Error:', data.message)
         } else if (data.event === 'message_end') {
-          console.log('消息结束')
+          console.log('Message end')
         }
       }
     }
@@ -604,9 +604,9 @@ async function chatExample() {
 }
 ```
 
-## 注意事项
+## Notes
 
-1. 所有 API 方法均返回 Promise，可以使用 async/await 或 .then() 处理
-2. 消息发送采用流式响应，需要处理 ReadableStream
-3. API 密钥格式通常为 `app-XXXXXXXX`，需要从 Dify 控制台获取
-4. 用户ID可以是任意字符串，用于标识用户身份，便于区分不同用户的会话
+1. Every API method returns a Promise; handle them with async/await or `.then()`.
+2. Message sending uses streaming responses, so you need to consume the `ReadableStream`.
+3. API keys typically look like `app-XXXXXXXX` and must be generated in the Dify console.
+4. The `user` ID can be any string that helps you distinguish between different end users.
