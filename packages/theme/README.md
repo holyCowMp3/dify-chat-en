@@ -2,17 +2,17 @@
 
 ![version](https://img.shields.io/npm/v/@dify-chat/theme) ![NPM Last Update](https://img.shields.io/npm/last-update/@dify-chat/theme) ![NPM Downloads](https://img.shields.io/npm/dm/@dify-chat/theme)
 
-`@dify-chat/theme` 是 Dify Chat 项目的主题包，它提供了一套主题管理的完整方案，包括主题上下文 hook、主题切换组件、主题状态管理等。
+`@dify-chat/theme` is the theming package for the Dify Chat project. It delivers a complete theme management solution, including context hooks, theme switchers, and state management utilities.
 
-## 主要功能
+## Key Features
 
-- 主题模式切换（系统/浅色/深色）
-- 完整的主题上下文管理
-- 暗黑模式自动适配
+- Theme mode switching (system / light / dark)
+- Comprehensive theme context management
+- Automatic dark-mode adaptation
 
-## 安装
+## Installation
 
-通过 npm/yarn/pnpm 安装：
+Install via npm, yarn, or pnpm:
 
 ```bash
 # npm
@@ -29,11 +29,11 @@ pnpm add @dify-chat/theme
 
 ### `<ThemeContextProvider />`
 
-主题上下文容器。
+Theme context provider.
 
-> 说明：只有在上层组件使用了 `ThemeContextProvider` 包裹应用，才能在子组件中使用主题相关的功能。
+> Note: Child components can only access theme features if the app is wrapped with `ThemeContextProvider`.
 
-在最外层组件中使用 `ThemeContextProvider` 包裹应用：
+Wrap your root component with `ThemeContextProvider`:
 
 ```tsx
 import { ThemeContextProvider } from '@dify-chat/theme';
@@ -48,9 +48,9 @@ function App() {
 
 ### `<ThemeSelector />`
 
-主题选择器组件。
+Theme selector component.
 
-默认情况下，`ThemeContextProvider` 中已经提供了自适应系统主题的能力。如果你需要支持用户手动切换主题模式，可以引入主题选择器：
+By default, `ThemeContextProvider` adapts to the system theme. If you want users to choose a theme themselves, include the selector:
 
 ```tsx
 import { ThemeSelector } from '@dify-chat/theme';
@@ -59,7 +59,7 @@ function App() {
   const { themeMode } = useThemeContext();
   return (
     <ThemeSelector>
-      <Button>当前主题模式：{themeMode}</Button>
+      <Button>Current theme mode: {themeMode}</Button>
     </ThemeSelector>
   );
 }
@@ -67,15 +67,15 @@ function App() {
 
 ### `useThemeContext()`
 
-获取主题上下文 hook。
+Hook to read and control the theme context.
 
-返回值：
+Returns:
 
-- `theme`: 当前应用的主题，值为 `'light' | 'dark'`
-- `themeMode`: 当前主题模式，值为 `'light' | 'dark' | 'system'`
-- `setThemeMode`: 设置主题模式，接受一个 `'light' | 'dark' | 'system'` 类型的参数
+- `theme`: current theme, `'light' | 'dark'`
+- `themeMode`: active theme mode, `'light' | 'dark' | 'system'`
+- `setThemeMode`: function to update the theme mode, accepts `'light' | 'dark' | 'system'`
 
-你可以使用 `useThemeContext` hook 获取当前应用的主题：
+Example of reading the current theme:
 
 ```tsx
 import { useThemeContext } from '@dify-chat/theme';
@@ -83,11 +83,11 @@ import { useThemeContext } from '@dify-chat/theme';
 function ThemeToggle() {
   const { theme } = useThemeContext();
 
-  return <div>当前主题模式：{theme}</div>;
+  return <div>Current theme: {theme}</div>;
 }
 ```
 
-也可以在组件中使用 `setThemeMode` 方法，自定义切换主题模式：
+You can also use `setThemeMode` to customize the theme switcher:
 
 ```tsx
 import { useThemeContext } from '@dify-chat/theme';
@@ -96,37 +96,37 @@ function ThemeSwitcher() {
   const { themeMode, setThemeMode } = useThemeContext();
   return (
     <div>
-      <h3>当前主题模式：{themeMode}</h3>
+      <h3>Current theme mode: {themeMode}</h3>
 
       <div>
-        <Button onClick={() => setThemeMode('light')}>浅色模式</Button>
-        <Button onClick={() => setThemeMode('dark')}>深色模式</Button>
-        <Button onClick={() => setThemeMode('system')}>系统主题</Button>
+        <Button onClick={() => setThemeMode('light')}>Light mode</Button>
+        <Button onClick={() => setThemeMode('dark')}>Dark mode</Button>
+        <Button onClick={() => setThemeMode('system')}>System theme</Button>
       </div>
     </div>
   );
 }
 ```
 
-### 其他导出的成员
+### Additional Exports
 
-**枚举**
+**Enums**
 
-- `ThemeEnum`: 主题枚举
-- `ThemeModeEnum`: 主题模式枚举
-- `ThemeModeLabelEnum`: 主题模式文本枚举
+- `ThemeEnum`: Theme values
+- `ThemeModeEnum`: Theme mode values
+- `ThemeModeLabelEnum`: Text labels for theme modes
 
-**常量**
+**Constants**
 
-- `ThemeModeOptions` : 主题模式选项
+- `ThemeModeOptions`: Theme mode options
 
-**类型**
+**Types**
 
-- `IThemeContext`: 主题上下文类型
-- `IThemeMode`: 主题模式类型
-- `ICurrentTheme`: 当前主题类型
+- `IThemeContext`: Theme context shape
+- `IThemeMode`: Theme mode type
+- `ICurrentTheme`: Current theme type
 
-使用示例:
+Usage example:
 
 ```tsx
 import { Select } from 'antd';
@@ -136,9 +136,9 @@ function ThemeSwitcher() {
   const { themeMode, setThemeMode } = useThemeContext();
   return (
     <div>
-      <h3>当前主题模式：{themeMode}</h3>
+      <h3>Current theme mode: {themeMode}</h3>
       <div>
-        切换主题模式：
+        Switch theme mode:
         <Select
           options={ThemeModeOptions}
           value={themeMode}

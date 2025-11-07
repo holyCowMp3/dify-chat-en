@@ -1,29 +1,29 @@
 # AGENTS Guidelines for This Repository
 
-## 仓库概览
+## Repository Overview
 
-Dify Chat 是一个基于 pnpm workspace 构建的 Monorepo 项目，包含以下几个子包(所有子包均存放在 packages 目录下)：
+Dify Chat is a monorepo built on top of a pnpm workspace. All sub-packages live under the `packages` directory:
 
-- api Dify API 的 Node.js 客户端库
-- components Dify 组件库，**即将废弃**，请不要在其他子包中引入，或者修改此包的源码（如果一定要修改，请先取得用户同意）
-- core 核心子包，存放核心抽象逻辑
-- docs 文档子包，基于 Rspress 构建
-- helpers 辅助工具函数
-- platform 平台子包，基于 Next.js 15 App Router 模式，提供应用配置的增删改查和 Dify API 代理
-- react-app React 应用子包，提供用户与 Dify 交互的前端界面
-- theme 主题子包，提供整个应用的主题相关组件/样式
+- `api`: Node.js client library for the Dify API
+- `components`: React component library for Dify (deprecated — do not import or modify without explicit approval)
+- `core`: Core abstractions and shared logic
+- `docs`: Documentation site, built with Rspress
+- `helpers`: Utility functions
+- `platform`: Next.js 15 App Router project that handles CRUD operations for app configuration and proxies Dify API calls
+- `react-app`: Front-end web client that end users interact with
+- `theme`: Theming components and styles shared across the app
 
-## 依赖管理
+## Dependency Management
 
-当你需要自行安装/更新依赖时，请务必注意：本项目使用 pnpm-workspace 的 catalog 协议进行依赖管理，所有的依赖版本都是在根目录的 `pnpm-workspace.yaml` 文件的 `catalog` 部分，你需要按需修改该文件中的版本号，在对应子包然后在项目根目录运行 `pnpm install` 命令来安装/更新依赖。
+When you need to install or update dependencies, remember that the project relies on the pnpm workspace catalog protocol. All dependency versions are declared in the `catalog` section of the root `pnpm-workspace.yaml`. Update the version there, then run `pnpm install` from the repository root after switching to the relevant sub-package.
 
-## 样式处理
+## Styling
 
-在本项目中，两个主要的子包（react-app 和 platform）都使用了 Tailwind CSS 进行样式管理。但它们使用的版本存在差异：
+Both primary sub-packages (`react-app` and `platform`) use Tailwind CSS, but they rely on different versions:
 
-- react-app 使用的是 Tailwind CSS v3, 版本是使用 pnpm catalog 协议定义，真正的版本存放在根目录的 pnpm-workspace.yaml 文件的 catalog 部分
-- platform 使用的是 Tailwind CSS v4, 版本直接在其 package.json 文件的 dependencies 部分定义
+- `react-app` uses Tailwind CSS v3, with the exact version defined through the pnpm catalog protocol (see the root `pnpm-workspace.yaml`)
+- `platform` uses Tailwind CSS v4, with the version declared directly under `dependencies` in its `package.json`
 
-## 开发调试
+## Development Workflow
 
-在进行代码变更之后，**你不需要**尝试启动开发服务器来验证修改是否生效，因为此应用所有的页面都有登录校验，在你变更代码之后我会自行验证。
+After making code changes, you **do not** need to start the development server to verify them. Every page in this application requires authentication, so I will handle validation once your changes are ready.
